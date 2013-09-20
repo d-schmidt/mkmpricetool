@@ -1,4 +1,13 @@
 mkmpricetool
 ============
 
-these are the saving you are looking for.
+Tries to find the best price based on the cards you want to buy on magickartenmarkt.de
+
+usage:  
+mkmlogin.py [optional cardlistfile]
+
+if you don't supply a file with english names  
+1 cardname    
+4 cardname    
+
+it will try to login and read your default wantlist and select all cards with amount >100 and subtract 100
