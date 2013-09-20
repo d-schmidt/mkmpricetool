@@ -11,7 +11,7 @@ import os
 
 
 loginData = {
-    'username': '123',
+    'username': '123123',
     'userPassword': '123123'
 }
 
@@ -559,6 +559,17 @@ def getCheapestPrice(cardList, cardSellerList):
 
         usedSellerCardCount = [0]*len(sellerNameList)
         print "possible combinations", numberOfPosibilities
+        
+        comparePrice = sumMissingCards
+        for sellerName in firstCardSellers:
+            amount = firstCardSellersAmountDict[sellerName]
+            if amount > 17:
+                comparePrice += 18500
+            elif amount > 4:
+                comparePrice += 12000
+            else:
+                comparePrice += 8500
+        print "price buying simply the cheapest: ", (comparePrice/10000.0)
 
         """
         bubbleSortListsAsc(cardList, cardSellerList)
@@ -642,7 +653,7 @@ def getCheapestPrice(cardList, cardSellerList):
                         shipping = 0.85
                     allSum += (sumPrice/10000.0)+shipping
                     print "    sum cards:", (sumPrice/10000.0), "shipping:", shipping, "sum:", (sumPrice/10000.0)+shipping
-                print '\nfinal best price: ', allSum
+                print '\nfinal best price: ', allSum, "you saved ", (comparePrice/10000.0) - allSum
             else:
                 for card in cardList:
                     print card
@@ -683,6 +694,7 @@ def getCheapestPrice(cardList, cardSellerList):
         stat.sort_stats('cumulative')
         stat.print_stats()
         #"""
+        print "price buying simply the cheapest: ", (comparePrice/10000.0)
     return buyMap
 
 
@@ -1112,8 +1124,8 @@ def main(args = sys.argv[1:]):
 
 
     #and now get me the best price
-    #wantList = wantList[-5:]
-    #cardSellerList = cardSellerList[-5:]
+    #wantList = wantList[:25]
+    #cardSellerList = cardSellerList[:25]
     getCheapestPrice(wantList, cardSellerList)
     print '\nprice just buying all cards: ', ((completePrice - len(wantList) * 8500) / 10000.0), '+shipping', (len(wantList) * 8500 / 10000.0), '(', (completePrice/10000.0), ')'
 
