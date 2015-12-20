@@ -1,5 +1,6 @@
-mkmpricetool
+this doesn't work anymore
 ============
+The page is different now and has its own estimation price finder.
 
 Tries to find the best price based on the cards you want to buy on magickartenmarkt.de
 
